@@ -68,7 +68,7 @@ Ensure the following tools are installed and authenticated on your machine:
 
 1. **Fetch Storage Key**:
    ```bash
-   az storage account keys list      --resource-group M11Kafka      --account-name m11kafkastorageacct      --query "[0].value" -o tsv
+   az storage account keys list      --resource-group M11Kafka      --account-name m11kafkastorageaccount      --query "[0].value" -o tsv
    ```
 
 2. **Update `terraform/main.tf`** with:
@@ -91,11 +91,6 @@ cd terraform/
 terraform init
 terraform plan -out=tfplan
 terraform apply tfplan
-```
-
-_To destroy:_
-```bash
-terraform destroy
 ```
 
 ## 5. Verify Azure Resources
@@ -158,16 +153,7 @@ kubectl get pods -o wide
 
 ## 10. Create Kafka Topic
 
-Create a topic named `expedia` with 3 partitions and replication factor 3:
-
-```bash
-kubectl exec kafka-0 -c kafka -- \
-  kafka-topics --create \
-    --topic expedia \
-    --partitions 3 \
-    --replication-factor 3 \
-    --bootstrap-server kafka:9092
-```
+Create a topic named `expedia` with 3 partitions and replication factor 3
 
 ## 11. Verify in Kafka
 
